@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>班级随机点名系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="张俊飞实验8.css">
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <!-- 页面标题 -->
+    <header class="mb-8 text-center">
+      <h1 class="text-[clamp(1.8rem,5vw,2.8rem)] font-bold text-gray-800 mb-2">班级随机点名系统</h1>
+      <p class="text-gray-600 text-lg">公平、随机地选择班级成员</p>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="bg-white rounded-xl shadow-lg p-6 mb-8 transform transition-all duration-300 hover:shadow-xl">
+      <!-- 随机点名显示区 -->
+      <div class="mb-8 text-center">
+        <h2 class="text-xl font-semibold text-gray-700 mb-4">当前选中</h2>
+        <div id="selected-student" class="bg-blue-50 rounded-lg p-6 min-h-[120px] flex items-center justify-center border-2 border-blue-200 transition-all duration-500">
+          <p class="text-[clamp(1.5rem,4vw,2.5rem)] font-bold text-blue-600" id="student-name">点击开始按钮</p>
+        </div>
+      </div>
+
+      <!-- 控制按钮区 -->
+      <div class="flex justify-center gap-4 mb-8">
+        <button id="start-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-md transform transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <i class="fa fa-play mr-2"></i> 开始
+        </button>
+        <button id="stop-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-8 rounded-full shadow-md transform transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400" disabled>
+          <i class="fa fa-stop mr-2"></i> 停止
+        </button>
+      </div>
+
+      <!-- 学生名单展示区 -->
+      <div>
+        <h2 class="text-xl font-semibold text-gray-700 mb-4">班级学生名单</h2>
+        <div id="student-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 max-h-[300px] overflow-y-auto p-2 bg-gray-50 rounded-lg">
+          <!-- 学生名单将通过JavaScript动态生成 -->
+        </div>
+      </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="text-center text-gray-500 text-sm">
+      <p>© 2025 班级随机点名系统 | 设计与开发</p>
+    </footer>
+  </div>
+
+  <script src="张俊飞实验8.js"></script>
+</body>
+</html>
