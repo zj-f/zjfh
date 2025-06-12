@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>个人简历表格</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  fieldset {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  legend {
+    padding: 0 10px;
+    font-weight: bold;
+  }
+  input[type="text"], input[type="number"], input[type="email"], input[type="tel"], select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 4px 0;
+    box-sizing: border-box;
+  }
+  input[type="file"] {
+    margin: 4px 0;
+  }
+  button {
+    padding: 10px 20px;
+    margin: 4px 0;
+  }
+</style>
+</head>
+<body>
+
+<form>
+  <fieldset>
+    <legend>个人简历</legend>
+    <table>
+      <tr>
+        <td>姓名</td>
+        <td><input type="text" name="name" required></td>
+        <td>性别</td>
+        <td><select name="gender">
+            <option value="male">男</option>
+            <option value="female">女</option>
+          </select></td>
+        <td>年龄</td>
+        <td><input type="number" name="age" required></td>
+      </tr>
+      <tr>
+        <td>籍贯</td>
+        <td><input type="text" name="origin"></td>
+        <td>联系电话</td>
+        <td><input type="tel" name="phone"></td>
+        <td>电子邮箱</td>
+        <td><input type="email" name="email"></td>
+      </tr>
+      <tr>
+        <td>学历</td>
+        <td><select name="education">
+            <option value="highschool">高中</option>
+            <option value="bachelor">本科</option>
+            <option value="master">硕士</option>
+            <option value="doctor">博士</option>
+          </select></td>
+        <td>健康状况</td>
+        <td><select name="health">
+            <option value="good">良好</option>
+            <option value="fair">一般</option>
+            <option value="poor">较差</option>
+          </select></td>
+        <td>婚姻状况</td>
+        <td><select name="marital">
+            <option value="single">未婚</option>
+            <option value="married">已婚</option>
+            <option value="divorced">离异</option>
+          </select></td>
+      </tr>
+      <tr>
+        <td>求职意向</td>
+        <td colspan="5"><select name="job_intention" multiple>
+            <option value="IT">IT</option>
+            <option value="Finance">金融</option>
+            <option value="Education">教育</option>
+            <option value="Healthcare">医疗</option>
+          </select></td>
+      </tr>
+      <tr>
+        <td>专业</td>
+        <td><select name="major">
+            <option value="computer_science">计算机科学</option>
+            <option value="economics">经济学</option>
+            <option value="education">教育学</option>
+            <option value="medicine">医学</option>
+          </select></td>
+        <td>毕业院校</td>
+        <td colspan="3"><input type="text" name="university"></td>
+      </tr>
+    </table>
+  </fieldset>
+
+  <fieldset>
+    <legend>技能证书</legend>
+    <input type="checkbox" name="skills" value="programming"> 编程<br>
+    <input type="checkbox" name="skills" value="design"> 设计<br>
+    <input type="checkbox" name="skills" value="management"> 管理<br>
+  </fieldset>
+
+  <fieldset>
+    <legend>个人特长与爱好</legend>
+    <input type="checkbox" name="hobbies" value="reading"> 阅读<br>
+    <input type="checkbox" name="hobbies" value="sports"> 运动<br>
+    <input type="checkbox" name="hobbies" value="music"> 音乐<br>
+  </fieldset>
+
+  <fieldset>
+    <legend>项目经历</legend>
+    <textarea name="experience" rows="4" cols="50"></textarea>
+  </fieldset>
+
+  <fieldset>
+    <legend>自我评价</legend>
+    <textarea name="self_assessment" rows="4" cols="50"></textarea>
+  </fieldset>
+
+  <button type="submit">提交</button>
+  <button type="reset">清除</button>
+</form>
+
+<script>
+  // 页面加载时从 localStorage 中读取数据并填充表单
+  window.onload = function () {
+    const inputs = document.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+      const value = localStorage.getItem(input.name);
+      if (value) {
+        if (input.type === 'checkbox') {
+          input.checked = value === 'true';
+        } else {
+          input.value = value;
+        }
+      }
+    });
+  };
+
+  // 在用户输入数据时保存到 localStorage
+  const inputs = document.querySelectorAll('input, select, textarea');
+  inputs.forEach(input => {
+    input.addEventListener('change', function () {
+      if (input.type === 'checkbox') {
+        localStorage.setItem(input.name, input.checked);
+      } else {
+        localStorage.setItem(input.name, input.value);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
